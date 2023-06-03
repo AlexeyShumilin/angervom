@@ -21,18 +21,18 @@ import CustomDropdown from "@/components/CustomDropdown.vue";
 
 
 export default {
-  name: 'AppHeader',
+  name: "AppHeader",
   components: {
-    CustomDropdown,
+    CustomDropdown
   },
   data() {
     return {
       languageOptions: [
-        { value: 'en', label: 'EN' },
-        { value: 'fi', label: 'FI' },
-        { value: 'ru', label: 'RU' },
+        { value: "en", label: "EN" },
+        { value: "fi", label: "FI" },
+        { value: "ru", label: "RU" }
       ],
-      currentLanguage: 'en',
+      currentLanguage: "en"
     };
   },
   methods: {
@@ -42,7 +42,7 @@ export default {
     onLanguageSelect(language) {
       this.currentLanguage = language;
       this.$i18n.locale = language; // Change the language using i18n
-    },
-  },
+    }
+  }
 };
 </script>

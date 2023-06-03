@@ -1,21 +1,24 @@
 <template>
   <footer>
-   <div class="footer">
-     <a href="#" @click="openPopup" class="privacy-link">Tietosuojaseloste</a>
-   </div>
+    <div class="footer">
+      <a class="privacy-link" href="#" @click="openPopup">Tietosuojaseloste</a>
+      <p class="footerText">© 2023 Angervo</p>
+    </div>
     <!-- Popup window -->
-    <div v-if="showPopup" class="popup-overlay">
-      <div class="popup-content">
+    <div v-if="showPopup" class="popup-overlay" @click="closePopup">
+      <div class="popup-content" @click.stop>
         <span class="close-button" @click="closePopup">&times;</span>
         <div class="popup-text">
           <!-- Insert the text for the popup here -->
+
           Tietosuojaseloste 13.4.2023<br>
           Rekisterinpitäjä:<br>
           Kielipalvelu Angervo<br>
           Helsinki<br>
           angervo@...<br>
           <br>
-          Kerään henkilötietoja asiakassuhteen hoitamista varten. Henkilötietojen käsittelyn perusteena on oikeutettu etu ja lakisääteiset velvoitteet.<br>
+          Kerään henkilötietoja asiakassuhteen hoitamista varten. Henkilötietojen käsittelyn perusteena on oikeutettu
+          etu ja lakisääteiset velvoitteet.<br>
           Kerään tietoja myös markkinointia varten. Henkilötietojen käsittelyn oikeusperusteena on suostumus.<br>
           En tee käyttäjiä koskevia profilointeja ja automaattisia päätöksiä.<br>
           <br>
@@ -35,18 +38,18 @@
           - oikeus peruuttaa suostumus (voit esimerkiksi peruuttaa suostumuksesi markkinointiin)<br>
           - oikeus tehdä valitus valvontaviranomaiselle<br>
           <br>
-          Huomioithan, että sinulla on “oikeus tulla unohdetuksi” vain, jos meillä ei ole lakisääteisiä velvoitteita jatkaa henkilötietojesi käsittelyä.
+          Huomioithan, että sinulla on “oikeus tulla unohdetuksi” vain, jos meillä ei ole lakisääteisiä velvoitteita
+          jatkaa henkilötietojesi käsittelyä.
+
         </div>
       </div>
     </div>
   </footer>
-
-
 </template>
 
 <script>
 export default {
-  name: 'AppFooter',
+  name: "AppFooter",
   data() {
     return {
       showPopup: false
@@ -55,27 +58,40 @@ export default {
   methods: {
     openPopup() {
       this.showPopup = true;
+      document.addEventListener("keydown", this.onEscKey);
     },
     closePopup() {
       this.showPopup = false;
+      document.removeEventListener("keydown", this.onEscKey);
     },
-    onLanguageChange() {
-      this.$router.replace({ path: this.localePath(this.$route.path) });
+    onEscKey(event) {
+      if (event.key === "Escape") {
+        this.closePopup();
+      }
     }
+  },
+  beforeDestroy() {
+    document.removeEventListener("keydown", this.onEscKey);
   }
 };
 </script>
-
 <style>
 
+.footerText {
+  color: white;
+  font-size: 10px;
+  font-weight: normal;
 
+}
 
-.privacy-link{
+.privacy-link {
+  font-family: 'Montserrat', sans-serif;
   text-decoration: none;
   color: white;
   font-size: 12px;
   cursor: pointer;
 }
+
 /* Styles for the popup window */
 .popup-overlay {
   position: fixed;
@@ -100,12 +116,13 @@ export default {
 }
 
 .close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  position: sticky;
+  top: 0;
+  left: 600px;
   cursor: pointer;
   font-size: 24px;
   color: #aaa;
+  z-index: 1;
 }
 
 .popup-text {
@@ -113,9 +130,32 @@ export default {
   line-height: 1.6;
 }
 
+@media (min-width: 2000px) {
+
+
+  .privacy-link {
+    font-size: 25px;
+  }
+
+  .footerText {
+    font-size: 25px;
+  }
+
+  .popup-content {
+    max-width: 950px;
+  }
+
+  .popup-text {
+    font-size: 22px;
+  }
+
+  .close-button {
+    left: 1500px;
+    font-size: 50px;
+  }
+}
+
+
 /* Other styles for the header component */
 /* Add your own styles here */
 </style>
-
-
-

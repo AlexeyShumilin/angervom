@@ -1,7 +1,7 @@
 <template>
-  <div class="custom-dropdown">
+  <div ref="dropdown" class="custom-dropdown">
     <div class="dropdown-toggle" @click="toggleDropdown">{{ selectedLabel }}</div>
-    <ul class="dropdown-menu" v-show="isDropdownOpen">
+    <ul v-show="isDropdownOpen" class="dropdown-menu">
       <li v-for="option in filteredOptions" :key="option.value" @click="selectOption(option.value)">
         {{ option.label }}
       </li>
@@ -14,16 +14,16 @@ export default {
   props: {
     options: {
       type: Array,
-      required: true,
+      required: true
     },
     selected: {
       type: String,
-      default: 'en', // Set English as the default language
-    },
+      default: "en" // Set English as the default language
+    }
   },
   data() {
     return {
-      isDropdownOpen: false,
+      isDropdownOpen: false
     };
   },
   computed: {
@@ -35,23 +35,39 @@ export default {
       return this.options.filter((option) => option.value !== this.selected);
     }
   },
+  mounted() {
+    document.addEventListener("click", this.handleClickOutside);
+    document.addEventListener("keydown", this.handleKeyDown);
+  },
+  beforeDestroy() {
+    document.removeEventListener("click", this.handleClickOutside);
+    document.removeEventListener("keydown", this.handleKeyDown);
+  },
   methods: {
     toggleDropdown() {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
     selectOption(option) {
-      this.$emit('select', option);
+      this.$emit("select", option);
       this.isDropdownOpen = false;
     },
-  },
+    handleClickOutside(event) {
+      if (!this.$refs.dropdown.contains(event.target)) {
+        this.isDropdownOpen = false;
+      }
+    },
+    handleKeyDown(event) {
+      if (event.key === "Escape") {
+        this.isDropdownOpen = false;
+      }
+    }
+  }
 };
 </script>
 
 <style scoped>
 .custom-dropdown {
-
   position: relative;
-
 }
 
 .dropdown-toggle {
@@ -65,6 +81,7 @@ export default {
 }
 
 .dropdown-menu {
+
   text-align: center;
   text-align-last: center;
   position: absolute;

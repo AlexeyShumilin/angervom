@@ -2,8 +2,8 @@
   <div class="container">
     <div class="mainContentContainer">
       <div class="mainTitle">
-        <h1 class="title">{{ $t('title') }}</h1>
-        <p class="mainParagraph">{{ $t('mainParagraph') }}</p>
+        <h1 class="title">{{ $t("title") }}</h1>
+        <p class="mainParagraph">{{ $t("mainParagraph") }}</p>
       </div>
 
       <div class="mainParagraphContainer">
@@ -15,18 +15,18 @@
 
     <div class="expertiseWrap">
       <div class="expertiseTitleWrap">
-        <h2>{{ $t('expertiseTitle') }}</h2>
+        <h2>{{ $t("expertiseTitle") }}</h2>
       </div>
 
       <div class="expertiseParagraph">
-        <p class="expertiseParagraphText">{{ $t('expertise') }}</p>
+        <p class="expertiseParagraphText">{{ $t("expertise") }}</p>
       </div>
 
     </div>
 
     <div class="contactsWrap">
       <div class="expertiseContactsWrap">
-        <h2>{{ $t('contacts') }}</h2>
+        <h2>{{ $t("contacts") }}</h2>
       </div>
       <div class="expertiseParagraph">
         <p>
@@ -34,7 +34,7 @@
         </p>
       </div>
       <div class="expertiseParagraph">
-        <p class="expertiseParagraphText">{{ $t('telephone') }}</p>
+        <p class="expertiseParagraphText">{{ $t("telephone") }}</p>
       </div>
     </div>
   </div>
@@ -44,23 +44,23 @@
 import MyImage from "@/static/myImage.jpg";
 
 export default {
-  name: 'home',
+  name: "home",
   data() {
     return {
       scrolled: false,
-      myImage: MyImage,
+      myImage: MyImage
     };
   },
   mounted() {
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener("scroll", this.handleScroll);
   },
   beforeDestroy() {
-    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
     handleScroll() {
       this.scrolled = window.scrollY > 0;
-    },
-  },
+    }
+  }
 };
 </script>

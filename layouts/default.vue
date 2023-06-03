@@ -1,22 +1,22 @@
 <template>
   <div class="page">
-    <Header/>
-    <Nuxt/>
-    <Footer/>
+    <Header />
+    <Nuxt />
+    <Footer />
   </div>
 </template>
 
 <script>
-import Header from '~/pages/header.vue';
-import Footer from '~/pages/footer.vue';
+import Header from "~/pages/header.vue";
+import Footer from "~/pages/footer.vue";
 
 
 export default {
   components: {
     Header,
-    Footer,
+    Footer
 
-  },
+  }
 };
 </script>
 
