@@ -20,7 +20,6 @@
 
       <div class="expertiseParagraph">
         <p class="expertiseParagraphText">{{ $t('expertise') }}</p>
-
       </div>
 
     </div>
@@ -30,7 +29,9 @@
         <h2>{{ $t('contacts') }}</h2>
       </div>
       <div class="expertiseParagraph">
-        <p class="expertiseParagraphText">{{ $t('mailTo') }}</p>
+        <p>
+          <a :href="'mailto:' + $t('mailTo')" class="contactMailLink">{{ $t("mailTo") }}</a>
+        </p>
       </div>
       <div class="expertiseParagraph">
         <p class="expertiseParagraphText">{{ $t('telephone') }}</p>
@@ -40,7 +41,7 @@
 </template>
 
 <script>
-import MyImage from '@/static/myImage.jpg';
+import MyImage from "@/static/myImage.jpg";
 
 export default {
   name: 'home',

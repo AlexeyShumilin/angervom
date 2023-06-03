@@ -2,7 +2,9 @@
   <div class="custom-dropdown">
     <div class="dropdown-toggle" @click="toggleDropdown">{{ selectedLabel }}</div>
     <ul class="dropdown-menu" v-show="isDropdownOpen">
-      <li v-for="option in options" :key="option.value" @click="selectOption(option.value)">{{ option.label }}</li>
+      <li v-for="option in filteredOptions" :key="option.value" @click="selectOption(option.value)">
+        {{ option.label }}
+      </li>
     </ul>
   </div>
 </template>
@@ -27,8 +29,11 @@ export default {
   computed: {
     selectedLabel() {
       const selectedOption = this.options.find((option) => option.value === this.selected);
-      return selectedOption ? selectedOption.label : '';
+      return selectedOption ? selectedOption.label : "";
     },
+    filteredOptions() {
+      return this.options.filter((option) => option.value !== this.selected);
+    }
   },
   methods: {
     toggleDropdown() {
@@ -44,41 +49,40 @@ export default {
 
 <style scoped>
 .custom-dropdown {
+
   position: relative;
+
 }
 
 .dropdown-toggle {
+  width: 25px;
   cursor: pointer;
-  padding: 5px;
-  background-color: #f1f1f1;
-  border: 1px solid #ccc;
   transition: 0.3s;
-
 }
 
-.dropdown-toggle:hover{
+.dropdown-toggle:hover {
   opacity: 0.5;
 }
 
 .dropdown-menu {
+  text-align: center;
+  text-align-last: center;
   position: absolute;
   top: 100%;
   left: 0;
   margin: 0;
   padding: 0;
   list-style: none;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  width: 100%;
 }
 
 .dropdown-menu li {
-  padding: 5px;
-  cursor: pointer;
 
+  cursor: pointer;
   transition: 0.3s;
 }
 
-.dropdown-menu li:hover{
+.dropdown-menu li:hover {
   opacity: 0.5;
 }
 </style>

@@ -186,6 +186,16 @@ p {
 
 }
 
+.contactMailLink {
+  text-decoration: none;
+  color: black;
+  transition: 0.3s;
+}
+
+.contactMailLink:hover {
+  opacity: 0.5;
+}
+
 
 .scroll-down {
   position: absolute;
@@ -276,7 +286,7 @@ p {
 
   .mainParagraph {
     padding-top: 1rem;
-    font-size: 3.6vw;
+    font-size: 3vw;
 
   }
 
@@ -287,7 +297,7 @@ p {
   }
 
   .expertiseParagraphText {
-    white-space: normal;
+    white-space: pre;
     font-size: 3vw;
   }
 
