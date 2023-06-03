@@ -1,0 +1,17 @@
+{
+  "home": "Home",
+  "about": "About",
+  "contacts": "Contact us:",
+  "title": "Kielipalvelu Angervo ",
+  "mainParagraph": "Translation and Interpretation Services,\nInternational Business Consulting and Assistance",
+  "mailTo": "contacts@angervo.com",
+  "telephone": "+358415714677",
+  "expertiseTitle": "Expertise:",
+
+  "expertise": "Languages: Finnish, English, Russian, Kurdish\nTechnical Communication and Information Design\nEastern Europe and Middle East as Business Environments\n",
+  "routes": {
+    "home": "home",
+    "about": "about",
+    "contact": "contact"
+  }
+}

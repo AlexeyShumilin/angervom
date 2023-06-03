@@ -1,0 +1,16 @@
+{
+  "home": "Koti",
+  "about": "Tietoja",
+  "contacts": "Ota yhteyttä:",
+  "title": "Kielipalvelu Angervo ",
+  "mainParagraph": "Käännös- ja tulkkauspalvelut\nLiiketoimintakonsultointi ja asiainhoitopalvelut",
+  "mailTo": "contacts@angervo.com",
+  "telephone": "+358415714677",
+  "expertiseTitle": "Asiantuntemus:",
+  "expertise": "Kielet: suomi, englanti, venäjä, kurdi\nTekninen viestintä ja tiedon muotoilu\nItä-Eurooppa ja Lähi-itä markkina-alueina\n",
+  "routes": {
+    "home": "koti",
+    "about": "tietoja",
+    "contact": "yhteystiedot"
+  }
+}
